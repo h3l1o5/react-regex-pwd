@@ -3,21 +3,21 @@ import React from "react";
 import PasswordField from "./PasswordField";
 import validator from "./validator";
 
+const PASSWORD_RULES = [
+  { validator: validator.isNotStartWithSpace, description: "Cannot start with space" },
+  { validator: validator.isNotEndWithSpace, description: "Cannot end with space" },
+  { validator: validator.hasLowerLetter, description: "Include a lower-case letter" },
+  { validator: validator.hasUpperLetter, description: "Include an upper-case letter" },
+  { validator: validator.hasNumber, description: "Include a number" },
+  { validator: validator.isLengthBetween(9, 50), description: "Be 9-50 characters long" },
+];
+
 const App: React.FC = () => {
   return (
     <div style={styles.root}>
       <div style={styles.form}>
         <p>Password</p>
-        <PasswordField
-          rules={[
-            { validator: validator.isNotStartWithSpace, description: "Cannot start with space" },
-            { validator: validator.isNotEndWithSpace, description: "Cannot end with space" },
-            { validator: validator.hasLowerLetter, description: "Include a lower-case letter" },
-            { validator: validator.hasUpperLetter, description: "Include an upper-case letter" },
-            { validator: validator.hasNumber, description: "Include a number" },
-            { validator: validator.isLengthBetween(9, 50), description: "Be 9-50 characters long" },
-          ]}
-        />
+        <PasswordField rules={PASSWORD_RULES} />
       </div>
     </div>
   );

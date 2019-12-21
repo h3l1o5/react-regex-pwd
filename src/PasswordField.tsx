@@ -70,4 +70,4 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
 };
 
-export default PasswordField;
+export default React.memo(PasswordField);
